@@ -6,9 +6,9 @@
   
 ================================== How to use launch file =====================================
   
-  => <!-- HOW TO USE THIS LAUNCH FILE
+  <!-- HOW TO USE THIS LAUNCH FILE
      1. set imu and gps covariance at line 19 and 20 to see the difference
      2. change the bag path to your own path, just like the example path at line 30
-     3. please open 3 markers in rviz, include /ground_truth , /gps_marker , /fusion marker in your own rviz -->
+     3. change the path of "competition1.rviz" to your own path, just like the example path at line 8-->
 
 ================================== How to use launch file =====================================
