@@ -14,6 +14,10 @@
      change the path of "competition1.rviz" to your own path, just like the example path at line 8 
 ================================== How to use launch file =====================================
 
+ => After finish playing the bag, you can get a csv file called "localization_measurement.csv" 
+ in $PATH-TO final_competition1/localization_ground_truth/
+ ,and you can verify the result by python file.
+ 
 ================================== What you can see in RVIZ ===================================
    1. green line : ground truth
    2. red line : gps data
