@@ -1,0 +1,32 @@
+<launch>
+    <!-- HOW TO USE THIS LAUNCH FILE
+     1. set imu and gps covariance at line 19 and 20 to see the difference
+     2. change the bag path to your own path, just like the example path at line 30
+     3. please open 3 markers in rviz, include /ground_truth , /gps_marker , /fusion marker in your own rviz -->
+
+    <!-- rviz -->
+    <node pkg="rviz" name="rviz" type="rviz" args="-d /home/dennis/ROS/sdc_ws/src/final_competition1/competition1.rviz"/>
+
+    <!-- ground_truth_node-->
+    <node pkg="final_competition1" name="ground_truth_node" type="ground_truth_node" output="screen"/>
+
+    <!-- map -->
+    <node pkg="final_competition1" name="map" type="map" output="screen"/>
+
+    <!-- kalman filter-->
+    <node pkg="final_competition1" name="localization" type="localization" output="screen">
+        <param name="sampling_rate"         type="double"   value="200.0" />
+        <param name="imu_covariance"        type="double"   value="1e-5" />
+        <param name="gps_covariance"        type="double"   value="0.5" />
+    </node>
+
+    <!-- gps transformer -->
+    <node pkg="final_competition1" name="gps_transformer_node" type="gps_transformer_node" output="screen"/>
+
+    <!-- sensor tf -->
+    <include file="$(find final_competition1)/launch/tf_gpal.launch" />
+
+    <!-- rosbag -->
+    <node pkg="rosbag" type="play" name="player" args="--clock /home/dennis/ROS/sdc_ws/src/gps_transformer/localization_1.bag"/>
+
+</launch>
