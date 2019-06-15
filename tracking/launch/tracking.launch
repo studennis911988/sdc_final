@@ -1,0 +1,19 @@
+<launch>
+        <!-- rviz -->
+        <node pkg="rviz" name="rviz" type="rviz" args="-d /home/dennis/ROS/sdc_ws/src/tracking/tracking.rviz"/>
+
+        <!-- ground_truth_node-->
+<!--        <node pkg="final_competition1" name="ground_truth_node" type="ground_truth_node" output="screen"/>-->
+
+
+
+        <!-- pcl cluster -->
+        <node pkg="tracking" name="pcl_cluster" type="pcl_cluster" output="screen"/>
+
+        <!-- sensor tf -->
+        <include file="$(find tracking)/launch/tf_gpal.launch" />
+
+        <!-- rosbag -->
+        <node pkg="rosbag" type="play" name="player" args="--clock  -r 0.1 /home/dennis/ROS/sdc_ws/src/final_competition2/tracking_1.bag"/>
+
+</launch>
